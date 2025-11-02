@@ -10,6 +10,7 @@ void displayMenu() {
     cout << "2. Decrease Friendship" << endl;
     cout << "3. Search for Villager" << endl;
     cout << "4. Exit" << endl;
+    cout << "5. Add Villager" << endl;
     cout << "Enter your choice: ";
 }
 
@@ -87,7 +88,30 @@ void displayVillagers(const map<string, tuple<int, string, string>>& villagerCol
 }
 
 
+void addVillager(map<string, tuple<int, string, string>>& villagerColors) {
+    string name;
+    string species;
+    string catchphrase;
+    int friendshipLevel;
 
+    cout << "Villager name: ";
+    cin >> name;
+    
+    cout << "Friendship level: ";
+    cin >> friendshipLevel;
+    
+    cout << "Species: ";
+    cin >> species;
+
+    cout << "Catchphrase: ";
+    cin >> catchphrase;
+
+    villagerColors[name] = make_tuple(friendshipLevel, species, catchphrase);
+    
+    cout << name << " added." << endl;
+
+
+}
 
 
 int main() {
@@ -124,8 +148,10 @@ int main() {
                 break;
             default:
                 cout << "Invalid choice. Please try again." << endl;
+            case 5:
+                addVillager(villagerColors);
         }
-    } while(choice != 4);
+    } while(choice != 5);
 
     displayVillagers(villagerColors);
 return 0;
@@ -134,19 +160,6 @@ return 0;
 }
 
 
-void addVillager(map<string, tuple<int, string, string>>& villagerColors, const string& name, int friendshipLevel, const string& primaryColor, const string& secondaryColor) {
-    string name;
-    string species;
-    int friendshipLevel;
-
-    cout << "Villager name: ";
-    cin >> name;
-    
-    cout << "Friendship level: ";
-    cin >> friendshipLevel;
-    
-    cout << "Species: ";
-    cin >> species;
-
+void deleteVillager(map<string, tuple<int, string, string>>& villagerColors) {
 
 }
