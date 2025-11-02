@@ -38,21 +38,26 @@ for (map<string, tuple<int, string, string>>::iterator it = villagerColors.begin
     // // delete an element
     // villagerColors.erase("Raymond");
 
-    // // search for an element using .find() to avoid errors
-    // string searchKey = "Audie";
-    // auto it = villagerColors.find(searchKey);
+    // search for an element using .find() to avoid errors
+    string searchKey = "Audie";
+    auto it = villagerColors.find(searchKey);
     
-    // if (it != villagerColors.end()) {  // the iterator points to beyond the end of the map
-    //                                    // if searchKey is not found
+    if (it != villagerColors.end()) {  // the iterator points to beyond the end of the map
+                                       // if searchKey is not found
+        cout << "\nFound " << searchKey << "'s data: ";
+        
+        cout << "Level " << get<0>(it->second) 
+             << ", Species: " << get<1>(it->second)
+             << ", Catchphrase: \"" << get<2>(it->second) << "\"";
 
-    //     cout << endl;
-    // } else
-    //     cout << endl << searchKey << " not found." << endl;
+        cout << endl;
+    } else
+        cout << endl << searchKey << " not found." << endl;
 
-    // // report size, clear, report size again to confirm map operations
-    // cout << "\nSize before clear: " << villagerColors.size() << endl;
-    // villagerColors.clear();
-    // cout << "Size after clear: " << villagerColors.size() << endl;
+    // report size, clear, report size again to confirm map operations
+    cout << "\nSize before clear: " << villagerColors.size() << endl;
+    villagerColors.clear();
+    cout << "Size after clear: " << villagerColors.size() << endl;
 
-    // return 0;
+    return 0;
 }
