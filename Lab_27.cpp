@@ -13,16 +13,23 @@ void displayMenu() {
     cout << "Enter your choice: ";
 }
 
-void increaseFriendshipLevel(map<string, tuple<int, string, string>> villagerColors) {
+void increaseFriendshipLevel(map<string, tuple<int, string, string>>& villagerColors) {
     string villagerName;
     cout << "Enter the name of the villager to increase friendship level: ";
     cin >> villagerName;
 
     auto name = villagerColors.find(villagerName);
     if (name != villagerColors.end()) {
+        
+        // tutor helped with this part - I didnt know to "reupdate" the tuple in the map
+        int level;
+        string species;
+        string catchphrase;
+        tie(level, species, catchphrase) = name->second; 
 
-        int level = get<0>(name->second);
-        level += 1; 
+        level++;
+
+         villagerColors[villagerName] = make_tuple(level, species, catchphrase);
 
         cout << villagerName << "'s new friendship level is: " << level << endl;
     } else {
@@ -32,16 +39,23 @@ void increaseFriendshipLevel(map<string, tuple<int, string, string>> villagerCol
 }
 
 
-void decreaseFriendshipLevel(map<string, tuple<int, string, string>> villagerColors) { //using the increse block
+void decreaseFriendshipLevel(map<string, tuple<int, string, string>>& villagerColors) { // still using the increase
     string villagerName;
-    cout << "Enter the name of the villager to decrease friendship level: ";
+    cout << "Enter the name of the villager to increase friendship level: ";
     cin >> villagerName;
 
     auto name = villagerColors.find(villagerName);
     if (name != villagerColors.end()) {
+        
+        // tutor helped with this part - I didnt know to "reupdate" the tuple in the map
+        int level;
+        string species;
+        string catchphrase;
+        tie(level, species, catchphrase) = name->second; 
 
-        int level = get<0>(name->second);
-        level -= 1; 
+        level--;
+
+         villagerColors[villagerName] = make_tuple(level, species, catchphrase);
 
         cout << villagerName << "'s new friendship level is: " << level << endl;
     } else {
@@ -51,7 +65,7 @@ void decreaseFriendshipLevel(map<string, tuple<int, string, string>> villagerCol
 }
 
 
-void searchVilager(map<string, tuple<int, string, string>> villagerColors) {
+void searchVilager(map<string, tuple<int, string, string>>& villagerColors) {
     string villagerName;
     cout << "Enter the name of the villager to find: ";
     cin >> villagerName;
