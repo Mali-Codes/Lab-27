@@ -51,6 +51,17 @@ void decreaseFriendshipLevel(map<string, tuple<int, string, string>> villagerCol
 }
 
 
+void searchVilager(map<string, tuple<int, string, string>> villagerColors) {
+    string villagerName;
+    cout << "Enter the name of the villager to find: ";
+    cin >> villagerName;
+
+    auto name = villagerColors.find(villagerName);
+    if (name != villagerColors.end()) {
+        cout << villagerName << " found!" << endl;
+    }
+}
+
 
 
 int main() {
@@ -71,16 +82,18 @@ int main() {
         cin >> choice;
 
         switch(choice) {
-            // case 1:
-            //     displayAllVillagers(villagerColors);
-            //     break;
+            
             case 1:
                 increaseFriendshipLevel(villagerColors);
                 break;
             case 2:
                 decreaseFriendshipLevel(villagerColors);
                 break;
+
             case 3:
+                searchVilager(villagerColors);
+                break;
+            case 4:
                 cout << "Exiting program." << endl;
                 break;
             default:
@@ -93,13 +106,3 @@ return 0;
 }
 
 
-void searchVilager(map<string, tuple<int, string, string>> villagerColors) {
-    string villagerName;
-    cout << "Enter the name of the villager to find: ";
-    cin >> villagerName;
-
-    name = auto villagerColors.find(villagerName);
-    if (name != villagerColors.end()) {
-        cout << villagerName << " found!" << endl;
-    }
-}
