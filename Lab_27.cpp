@@ -25,37 +25,34 @@ int main() {
 
     // access the map using iterators
     cout << "\nVillagers and their favorite colors (iterators):" << endl;
-    for (map<string,tuple<int, string, string>>::iterator it = villagerColors.begin(); 
-                                               it != villagerColors.end(); ++it) {
-        cout << it->first << ": ";
-        for (auto color : it->second) {
-            cout << pair.first << ": ";
-            cout << "Level " << get<0>(pair.second) 
-             << ", species: " << get<1>(pair.second)
-             << ", Color: " << get<2>(pair.second) << endl;
-
-        }
+    cout << "\nVillagers and their data (iterators):" << endl;
+for (map<string, tuple<int, string, string>>::iterator it = villagerColors.begin(); 
+                                                        it != villagerColors.end(); ++it) {
+    cout << it->first << ": ";
+    cout << "Level " << get<0>(it->second) 
+         << ", Species: " << get<1>(it->second)
+         << ", Catchphrase: " << get<2>(it->second) << endl;
         cout << endl;
     }
 
-    // delete an element
-    villagerColors.erase("Raymond");
+    // // delete an element
+    // villagerColors.erase("Raymond");
 
-    // search for an element using .find() to avoid errors
-    string searchKey = "Audie";
-    auto it = villagerColors.find(searchKey);
+    // // search for an element using .find() to avoid errors
+    // string searchKey = "Audie";
+    // auto it = villagerColors.find(searchKey);
     
-    if (it != villagerColors.end()) {  // the iterator points to beyond the end of the map
-                                       // if searchKey is not found
-       
-        cout << endl;
-    } else
-        cout << endl << searchKey << " not found." << endl;
+    // if (it != villagerColors.end()) {  // the iterator points to beyond the end of the map
+    //                                    // if searchKey is not found
 
-    // report size, clear, report size again to confirm map operations
-    cout << "\nSize before clear: " << villagerColors.size() << endl;
-    villagerColors.clear();
-    cout << "Size after clear: " << villagerColors.size() << endl;
+    //     cout << endl;
+    // } else
+    //     cout << endl << searchKey << " not found." << endl;
 
-    return 0;
+    // // report size, clear, report size again to confirm map operations
+    // cout << "\nSize before clear: " << villagerColors.size() << endl;
+    // villagerColors.clear();
+    // cout << "Size after clear: " << villagerColors.size() << endl;
+
+    // return 0;
 }
