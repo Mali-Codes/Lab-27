@@ -17,9 +17,10 @@ int main() {
     cout << "Villagers and their favorite colors (range-based for loop):" << endl;
     for (auto pair : villagerColors) {
         cout << pair.first << ": ";
-        for (auto color : pair.second)
-            cout << color << " ";
-        cout << endl;
+        cout << "Level " << get<0>(pair.second) 
+             << ", species: " << get<1>(pair.second)
+             << ", Color: " << get<2>(pair.second) << endl;
+
     }
 
     // access the map using iterators
@@ -39,11 +40,10 @@ int main() {
     // search for an element using .find() to avoid errors
     string searchKey = "Audie";
     auto it = villagerColors.find(searchKey);
+    
     if (it != villagerColors.end()) {  // the iterator points to beyond the end of the map
                                        // if searchKey is not found
-        cout << "\nFound " << searchKey << "'s favorite colors: ";
-        for (auto color : it->second)  // range loop to traverse the value/vector
-            cout << color << " ";
+       
         cout << endl;
     } else
         cout << endl << searchKey << " not found." << endl;
