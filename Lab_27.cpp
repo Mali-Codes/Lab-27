@@ -96,9 +96,9 @@ int main() {
 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
-    villagerColors["Audie"] = {10, "Yellow", "Red"};
-    villagerColors["Raymond"] = {48, "Gray", "White"};
-    villagerColors.insert({"Marshal", {5, "White", "Black"}});
+    villagerColors["Audie"] = {10, "Yellow", "Wowzers"};
+    villagerColors["Raymond"] = {48, "Gray", "Dodgers in 7"};
+    villagerColors.insert({"Marshal", {5, "White", "Brrr"}});
 
 
     int choice;
@@ -134,3 +134,19 @@ return 0;
 }
 
 
+void addVillager(map<string, tuple<int, string, string>>& villagerColors, const string& name, int friendshipLevel, const string& primaryColor, const string& secondaryColor) {
+    string name;
+    string species;
+    int friendshipLevel;
+
+    cout << "Villager name: ";
+    cin >> name;
+    
+    cout << "Friendship level: ";
+    cin >> friendshipLevel;
+    
+    cout << "Species: ";
+    cin >> species;
+
+
+}
