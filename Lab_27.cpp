@@ -11,6 +11,7 @@ void displayMenu() {
     cout << "3. Search for Villager" << endl;
     cout << "4. Exit" << endl;
     cout << "5. Add Villager" << endl;
+    cout << "6. Delete Villager" << endl;
     cout << "Enter your choice: ";
 }
 
@@ -83,7 +84,14 @@ void displayVillagers(const map<string, tuple<int, string, string>>& villagerCol
     for (const auto& pair : villagerColors) {
         const string& name = pair.first;
         int friendshipLevel = get<0>(pair.second);
-        cout << "Villager: " << name << ", Friendship Level: " << friendshipLevel << endl;
+        string species = get<1>(pair.second);
+        string catchphrase = get<2>(pair.second);
+
+        cout << "Villager: " << name 
+         << ", Friendship Level: " << friendshipLevel 
+         << ", Species: " << species              
+         << ", Catchphrase: " << catchphrase 
+         << endl;
     }
 }
 
@@ -113,6 +121,21 @@ void addVillager(map<string, tuple<int, string, string>>& villagerColors) {
 
 }
 
+void deleteVillager(map<string, tuple<int, string, string>>& villagerColors) { // used structure from find in search function
+    string villagerName;
+    
+    cout << "Enter Villager Name to delete: ";
+    cin >> villagerName;
+
+    auto name = villagerColors.find(villagerName); 
+    if (name != villagerColors.end()) {
+        villagerColors.erase(name);
+        cout << villagerName << " has been deleted." << endl;
+    } else {
+        cout << villagerName << " not found." << endl;
+    }
+}
+
 
 int main() {
     // declarations
@@ -120,10 +143,9 @@ int main() {
 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
-    villagerColors["Audie"] = {10, "Yellow", "Wowzers"};
-    villagerColors["Raymond"] = {48, "Gray", "Dodgers in 7"};
-    villagerColors.insert({"Marshal", {5, "White", "Brrr"}});
-
+    villagerColors["Audie"] = {10, "Duck", "Wowzers"};
+    villagerColors["Raymond"] = {48, "Dog", "Dodgers in 7"};
+    villagerColors.insert({"Marshal", {5, "Whale", "Brrr"}});
 
     int choice;
 
@@ -150,16 +172,13 @@ int main() {
                 cout << "Invalid choice. Please try again." << endl;
             case 5:
                 addVillager(villagerColors);
+                break;
+            case 6:
+                deleteVillager(villagerColors);
+                break;
         }
-    } while(choice != 5);
+    } while(choice != 4);
 
     displayVillagers(villagerColors);
 return 0;
-
-
-}
-
-
-void deleteVillager(map<string, tuple<int, string, string>>& villagerColors) {
-
 }
