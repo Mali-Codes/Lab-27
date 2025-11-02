@@ -45,7 +45,7 @@ for (map<string, tuple<int, string, string>>::iterator it = villagerColors.begin
     if (it != villagerColors.end()) {  // the iterator points to beyond the end of the map
                                        // if searchKey is not found
         cout << "\nFound " << searchKey << "'s data: ";
-        
+
         cout << "Level " << get<0>(it->second) 
              << ", Species: " << get<1>(it->second)
              << ", Catchphrase: \"" << get<2>(it->second) << "\"";
@@ -61,3 +61,4 @@ for (map<string, tuple<int, string, string>>::iterator it = villagerColors.begin
 
     return 0;
 }
+
