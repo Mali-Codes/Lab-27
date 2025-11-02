@@ -29,7 +29,11 @@ int main() {
                                                it != villagerColors.end(); ++it) {
         cout << it->first << ": ";
         for (auto color : it->second) {
-            cout << color << " ";
+            cout << pair.first << ": ";
+            cout << "Level " << get<0>(pair.second) 
+             << ", species: " << get<1>(pair.second)
+             << ", Color: " << get<2>(pair.second) << endl;
+
         }
         cout << endl;
     }
