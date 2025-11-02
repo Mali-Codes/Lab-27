@@ -13,6 +13,44 @@ int main() {
     villagerColors["Raymond"] = {48, "Gray", "White"};
     villagerColors.insert({"Marshal", {5, "White", "Black"}});
 
+
+    int choice;
+
+    do {
+        displayMenu()
+        cin >> choice;
+
+        switch(chouce) {
+            case 1:
+                displayAllVillagers(villagerColors);
+                break;
+            case 2:
+                increaseFriendshipLevel(villagerColors);
+                break;
+            case 3:
+                cout << "Exiting program." << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // access the map using a range-based for loop
     cout << "Villagers and their favorite colors (range-based for loop):" << endl;
     for (auto pair : villagerColors) {
@@ -62,3 +100,29 @@ for (map<string, tuple<int, string, string>>::iterator it = villagerColors.begin
     return 0;
 }
 
+void displayMenu() {
+    cout << "\n=== Villager Friendship Menu ===" << endl;
+    cout << "1. Increase Friendship" << endl;
+    cout << "2. Decrease Friendship" << endl;
+    cout << "3. Search for Villager" << endl;
+    cout << "4. Exit" << endl;
+    cout << "Enter your choice: ";
+}
+
+void increaseFriendshipLevel(map<string, tuple<int, string, string>> villagerColors) {
+    string villagerName;
+    cout << "Enter the name of the villager to increase friendship level: ";
+    cin >> villagerName;
+
+    auto name = villagerColors.find(villagerName);
+    if (name != villagerColors.end()) {
+
+        int level = get<0>(name->second);
+        level += 1; 
+
+        cout << villagerName << "'s new friendship level is: " << level << endl;
+    } else {
+        cout << villagerName << " not found." << endl;
+    }
+
+}
