@@ -63,6 +63,18 @@ void searchVilager(map<string, tuple<int, string, string>> villagerColors) {
 }
 
 
+void displayVillagers(const map<string, tuple<int, string, string>>& villagerColors) { //from first part of lab
+    cout << "===Viallagers===" << endl;
+    for (const auto& pair : villagerColors) {
+        const string& name = pair.first;
+        int friendshipLevel = get<0>(pair.second);
+        cout << "Villager: " << name << ", Friendship Level: " << friendshipLevel << endl;
+    }
+}
+
+
+
+
 
 int main() {
     // declarations
@@ -101,8 +113,10 @@ int main() {
         }
     } while(choice != 4);
 
-
+    displayVillagers(villagerColors);
 return 0;
+
+
 }
 
 
